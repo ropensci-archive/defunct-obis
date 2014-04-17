@@ -5,8 +5,8 @@
 
 
 # Here is the URL: 
-http://www.iobis.org/geoserver/OBIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=OBIS:points_ex
-&outputFormat=csv&VIEWPARAMS=where:tname='Kogia breviceps'
+# http://www.iobis.org/geoserver/OBIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=OBIS:points_ex
+# &outputFormat=csv&VIEWPARAMS=where:tname='Kogia breviceps'
 
 # We'll rename the function later. To something unique, perhaps a short prefix for all functions in this package so they don't conflict with others that might get loaded at the same time.
 
@@ -48,11 +48,17 @@ request <- "GetFeature"
 typeName <- "OBIS:points_ex"
 outputFormat <- "csv"
 VIEWPARAMS <- paste0("where:tname=", "\'" ,species, "\'")
+# Compact removes anything from the list if it's NULL
 args <- as.list(compact(c(service = service, version = version, 
 	request = request, typeName = typeName, 
 	outputFormat = outputFormat, VIEWPARAMS = VIEWPARAMS)))
+# Using the GET protocol, we pass these arguments to the API
 data <- GET(base_url, query = args, foptions)
+# We don't parse the results in the first go, just get it back as is
 results <- content(data, as = "text")
+# Then we coerce into a data.frame
+# This step is slow but we'll have to optimise it. 
+# Perhaps request a better format that csv from the server
 read.csv(textConnection(results))
 }
 
