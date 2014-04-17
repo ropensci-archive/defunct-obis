@@ -17,7 +17,8 @@
 # (or help files when you search with ?function_name)
 # Some of the patterns might seem obvious. The first line is the title. After a blank like is the package description. 
 # Then, every argument the function takes (whatever we define) is described with an  @param.
-# Functions have to be exported if they are to be accessible by name. Otherwise they are only available internally to the package. 
+# Functions have to be exported if they are to be accessible by name. 
+# Otherwise they are only available internally to the package. 
 # Finally we add some keywords and an example.
 
 # THe @import tag means pull in specific functions from other packages so we can use them here.
