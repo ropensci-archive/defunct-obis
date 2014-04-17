@@ -1,5 +1,6 @@
 
-# Kate: I'm writing the first iteration of a function for querying observations from OBIS. I'm starting with the URL in slide #30 from the email. 
+# Kate: I'm writing the first iteration of a function for querying observations from OBIS. 
+# I'm starting with the URL in slide #30 from the email. 
 # We'll make this function more complex once we figure out all the arguments this specific URL (or REST method can take). 
 # For now, let's just pass species names and get some data back.
 
@@ -8,10 +9,12 @@
 # http://www.iobis.org/geoserver/OBIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=OBIS:points_ex
 # &outputFormat=csv&VIEWPARAMS=where:tname='Kogia breviceps'
 
-# We'll rename the function later. To something unique, perhaps a short prefix for all functions in this package so they don't conflict with others that might get loaded at the same time.
+# We'll rename the function later. To something unique, perhaps a short prefix for all functions in this package,
+# so they don't conflict with others that might get loaded at the same time.
 
 # Note all the comments below (or immediately above the function) with #' and an @ signs in front of them are doc strings.
-# We will use the document(".") function in the devtools package to turn all of this into manual files (or help files when you search with ?function_name)
+# We will use the document(".") function in the devtools package to turn all of this into manual files.
+# (or help files when you search with ?function_name)
 # Some of the patterns might seem obvious. The first line is the title. After a blank like is the package description. 
 # Then, every argument the function takes (whatever we define) is described with an  @param.
 # Functions have to be exported if they are to be accessible by name. Otherwise they are only available internally to the package. 
