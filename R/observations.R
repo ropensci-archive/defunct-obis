@@ -17,13 +17,17 @@
 # (or help files when you search with ?function_name)
 # Some of the patterns might seem obvious. The first line is the title. After a blank like is the package description. 
 # Then, every argument the function takes (whatever we define) is described with an  @param.
-# Functions have to be exported if they are to be accessible by name. 
+# Functions have to be exported (using @export) if they are to be accessible by name. 
 # Otherwise they are only available internally to the package. 
 # Finally we add some keywords and an example.
 
 # THe @import tag means pull in specific functions from other packages so we can use them here.
 #  We can import entire packages with @import package_name or 
 #  @importFrom package_name functions
+
+# You'll see below that I did both. I imported entire packages (httr and assertthat).
+# But I also only pulled in one function (compact) from plyr. 
+# We can rewrite that function in this package later to avoid this extra dependency
 
 
 # ----- The above comments wont actually be in the package once it's ready. ---------------
@@ -67,7 +71,8 @@ read.csv(textConnection(results))
 }
 
 # Since we haven't packaged the library yet,
-# we do have to load the functions separately
+# we do have to load the packages/functions explicitly
+# Install these with install.packages("package_name") if you don't have them.
 library(httr)
 library(assertthat)
 library(plyr)
@@ -75,3 +80,5 @@ library(plyr)
 # Now run this
 x <- obs(species = 'Kogia breviceps')
 # Now just type x or edit(x) to see in spreadsheet view
+# Did this work?
+# If so, then yay! If not the API is likely down.
