@@ -15,8 +15,10 @@
 # Note all the comments below (or immediately above the function) with #' and an @ signs in front of them are doc strings.
 # We will use the document(".") function in the devtools package to turn all of this into manual files.
 # (or help files when you search with ?function_name)
-# Some of the patterns might seem obvious. The first line is the title. After a blank like is the package description. 
+# Some of the patterns might seem obvious. The first line is the title. After a blank like is the function description. 
+# This can be as long as you like and contain formatted content like tables, bulleted lists etc.
 # Then, every argument the function takes (whatever we define) is described with an  @param.
+# Followed by a brief description
 # Functions have to be exported (using @export) if they are to be accessible by name. 
 # Otherwise they are only available internally to the package. 
 # Finally we add some keywords and an example.
