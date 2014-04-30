@@ -1,39 +1,3 @@
-
-# Kate: I'm writing the first iteration of a function for querying observations from OBIS. 
-# I'm starting with the URL in slide #30 from the email. 
-# We'll make this function more complex once we figure out all the arguments this specific URL (or REST method can take). 
-# For now, let's just pass species names and get some data back.
-
-
-# Here is the URL: 
-# http://www.iobis.org/geoserver/OBIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=OBIS:points_ex
-# &outputFormat=csv&VIEWPARAMS=where:tname='Kogia breviceps'
-
-# We'll rename the function later. To something unique, perhaps a short prefix for all functions in this package,
-# so they don't conflict with others that might get loaded at the same time.
-
-# Note all the comments below (or immediately above the function) with #' and an @ signs in front of them are doc strings.
-# We will use the document(".") function in the devtools package to turn all of this into manual files.
-# (or help files when you search with ?function_name)
-# Some of the patterns might seem obvious. The first line is the title. After a blank like is the function description. 
-# This can be as long as you like and contain formatted content like tables, bulleted lists etc.
-# Then, every argument the function takes (whatever we define) is described with an  @param.
-# Followed by a brief description
-# Functions have to be exported (using @export) if they are to be accessible by name. 
-# Otherwise they are only available internally to the package. 
-# Finally we add some keywords and an example.
-
-# THe @import tag means pull in specific functions from other packages so we can use them here.
-#  We can import entire packages with @import package_name or 
-#  @importFrom package_name functions
-
-# You'll see below that I did both. I imported entire packages (httr and assertthat).
-# But I also only pulled in one function (compact) from plyr. 
-# We can rewrite that function in this package later to avoid this extra dependency
-
-
-# ----- The above comments wont actually be in the package once it's ready. ---------------
-
 #' OBIS observations
 #'
 #' A longer description
@@ -71,16 +35,3 @@ results <- content(data, as = "text")
 # Perhaps request a better format that csv from the server
 read.csv(textConnection(results))
 }
-
-# Since we haven't packaged the library yet,
-# we do have to load the packages/functions explicitly
-# Install these with install.packages("package_name") if you don't have them.
-library(httr)
-library(assertthat)
-library(plyr)
-
-# Now run this
-x <- obs(species = 'Kogia breviceps')
-# Now just type x or edit(x) to see in spreadsheet view
-# Did this work?
-# If so, then yay! If not the API is likely down.
